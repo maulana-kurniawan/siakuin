@@ -1,8 +1,8 @@
-import './bootstrap';
+// import './bootstrap';
 
 $(".showPassword").click(function () {
-    var x = document.getElementById("passwordLogin");
-    var xx = document.getElementById("password");
+    const x = document.getElementById("passwordLogin");
+    const xx = document.getElementById("passwordRegist");
 
     const y = document.querySelector(".pwShowicon");
     const a =
