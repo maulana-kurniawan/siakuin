@@ -1,3 +1,7 @@
+:root {
+    --tblr-font-sans-serif: "Supreme", sans-serif;
+}
+
 * {
     box-sizing: border-box;
     outline: none;
@@ -29,7 +33,7 @@
 }
 
 .loginContent .tabs ul li.active {
-    background:#0054a6;
+    background: #0054a6;
     color: rgb(255, 255, 255);
 
 }
