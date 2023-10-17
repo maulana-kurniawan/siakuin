@@ -15,7 +15,7 @@
                 </ul>
             </div>
             <div class="sign_in">
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('post.login') }}">
                     @csrf
 
                     <div class="mb-3">
@@ -93,7 +93,7 @@
             </div>
 
             <div class="sign_up">
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('post.register') }}">
                     @csrf
 
                     <div class="mb-3">
@@ -143,7 +143,29 @@
 
                     <div class="mb-3">
                         <label class="form-label">Confirm Password</label>
-                        <input id="password-confirm" placeholder="Confirm your password" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                        <div class="input-group input-group-flat">
+                        <input id="password-confirm" type="password" placeholder="Confirm your password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            @error('passwordRegist')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                            <span class="input-group-text">
+                                <a href="#" class="link-secondary showPassword" data-bs-toggle="tooltip" aria-label="Show password" data-bs-original-title="Show password">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/eye -->
+                                    <span class="pwShowicon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-closed" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M21 9c-2.4 2.667 -5.4 4 -9 4c-3.6 0 -6.6 -1.333 -9 -4"></path>
+                                            <path d="M3 15l2.5 -3.8"></path>
+                                            <path d="M21 14.976l-2.492 -3.776"></path>
+                                            <path d="M9 17l.5 -4"></path>
+                                            <path d="M15 17l-.5 -4"></path>
+                                        </svg>
+                                    </span>
+                                </a>
+                            </span>
+                        </div>
                     </div>
 
                     <div class="form-footer">
