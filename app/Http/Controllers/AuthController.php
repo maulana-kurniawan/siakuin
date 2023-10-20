@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Session;
 
 class AuthController extends Controller
 {
@@ -19,6 +20,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',
@@ -33,19 +35,24 @@ class AuthController extends Controller
 
             return redirect()->intended('/');
         } catch (\Exception $e) {
-            return back()->withErrors([
-                'email' => 'These credentials do not match our records.',
-            ]);
+            return back()->with('alert', 'Email atau Password Salah !');
         }
     }
 
     public function register(Request $request)
     {
+
+        $messages = [
+            'required' => ':attribute wajib diisi cuy!!!',
+            'min' => ':attribute harus diisi minimal :min karakter ya cuy!!!',
+            'max' => ':attribute harus diisi maksimal :max karakter ya cuy!!!',
+        ];
+
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed',
-        ]);
+        ], $messages);
 
         $name = $request->input('name');
         $email = $request->input('email');

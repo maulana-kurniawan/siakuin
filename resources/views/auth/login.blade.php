@@ -15,6 +15,21 @@
                 </ul>
             </div>
             <div class="sign_in">
+                @if(\Session::has('alert'))
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div class="d-flex" style="align-items: center;">
+                        <div style="margin-right: 10px;">
+                            <i class="ti ti-alert-triangle-filled" style="font-size: x-large;"  ></i>
+                        </div>
+                        <div>
+                            <h4 class="alert-title">Error</h4>
+                            <div class="text-secondary">{{Session::get('alert')}}</div>
+                        </div>
+                    </div>
+                    <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+                </div>
+                @endif
+            
                 <form method="POST" action="{{ route('post.login') }}">
                     @csrf
 
@@ -144,7 +159,7 @@
                     <div class="mb-3">
                         <label class="form-label">Confirm Password</label>
                         <div class="input-group input-group-flat">
-                        <input id="password-confirm" type="password" placeholder="Confirm your password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            <input id="password-confirm" type="password" placeholder="Confirm your password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             @error('passwordRegist')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
