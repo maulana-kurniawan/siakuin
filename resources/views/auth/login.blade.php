@@ -19,7 +19,7 @@
                 <div class="alert alert-danger alert-dismissible" role="alert">
                     <div class="d-flex" style="align-items: center;">
                         <div style="margin-right: 10px;">
-                            <i class="ti ti-alert-triangle-filled" style="font-size: x-large;"  ></i>
+                            <i class="ti ti-alert-triangle-filled" style="font-size: x-large;"></i>
                         </div>
                         <div>
                             <h4 class="alert-title">Error</h4>
@@ -29,7 +29,7 @@
                     <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
                 </div>
                 @endif
-            
+
                 <form method="POST" action="{{ route('post.login') }}">
                     @csrf
 
@@ -54,7 +54,7 @@
                         <div class="input-group input-group-flat">
                             <input type="password" id="passwordLogin" class="form-control @error('password') is-invalid @enderror" placeholder="Your password" name="password" required autocomplete="current-password">
                             <span class="input-group-text">
-                                <a href="#" class="link-secondary showPassword" data-bs-toggle="tooltip" aria-label="Show password" data-bs-original-title="Show password">
+                                <a href="javascript:void(0)" class="link-secondary showPassword" data-bs-toggle="tooltip" aria-label="Show password" data-bs-original-title="Show password">
                                     <!-- Download SVG icon from http://tabler-icons.io/i/eye -->
                                     <span class="pwShowicon">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-closed" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -139,7 +139,7 @@
                             </span>
                             @enderror
                             <span class="input-group-text">
-                                <a href="#" class="link-secondary showPassword" data-bs-toggle="tooltip" aria-label="Show password" data-bs-original-title="Show password">
+                                <a href="javascript:void(0)" class="link-secondary showPassword" data-bs-toggle="tooltip" aria-label="Show password" data-bs-original-title="Show password">
                                     <!-- Download SVG icon from http://tabler-icons.io/i/eye -->
                                     <span class="pwShowicon">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-closed" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -166,7 +166,7 @@
                             </span>
                             @enderror
                             <span class="input-group-text">
-                                <a href="#" class="link-secondary showPassword" data-bs-toggle="tooltip" aria-label="Show password" data-bs-original-title="Show password">
+                                <a href="javascript:void(0)" class="link-secondary showPassword" data-bs-toggle="tooltip" aria-label="Show password" data-bs-original-title="Show password">
                                     <!-- Download SVG icon from http://tabler-icons.io/i/eye -->
                                     <span class="pwShowicon">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-closed" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
