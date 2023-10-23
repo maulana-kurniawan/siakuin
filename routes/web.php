@@ -33,3 +33,8 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/', [HomeController::class, 'index'])->name('home');
   Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+// Setting Profile
+Route::get('/setting', function () {
+  return view('setting');
+})->name('setting-profile');

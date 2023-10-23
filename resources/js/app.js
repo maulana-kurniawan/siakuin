@@ -33,7 +33,7 @@ $(document).ready(function () {
     $('.sign_up_li').on('click', function () {
         $(this).addClass('active');
         $('.sign_in_li').removeClass('active');
-        $('.textHead').text('Create your account');
+        $('.textHead').text('Create new account');
         $('.sign_up').show();
         $('.sign_in').hide();
     })
