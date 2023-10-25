@@ -20,6 +20,11 @@
                         Account Settings
                     </h2>
                 </div>
+                <div class="col-auto">
+                    <a href="./" class="btn btn-outline-primary w-100">
+                        <i class="ti ti-home me-2"></i><span> Home</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
