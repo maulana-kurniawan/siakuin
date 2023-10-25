@@ -1,3 +1,12 @@
+<style>
+    .nav-tabs>.nav-item>a.active {
+        color: #ffffff;
+        background-color: #0054a6;
+        font-size: medium;
+        font-weight: 500;
+    }
+</style>
+
 @extends('layouts.app')
 
 @section('content')
@@ -21,15 +30,15 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <ul class="nav nav-tabs card-header-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
+                            <ul class="nav nav-tabs card-header-tabs nav-fill p-0" data-bs-toggle="tabs" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <a href="#tabs-profile" class="nav-link active fs-3" data-bs-toggle="tab" aria-selected="true" role="tab"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                    <a href="#tabs-profile" class="nav-link active" data-bs-toggle="tab" aria-selected="true" role="tab"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                                         <i class="ti ti-user-circle me-2"></i>
                                         Update Profile</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a href="#tabs-password" class="nav-link" data-bs-toggle="tab" aria-selected="false" role="tab" tabindex="-1"><!-- Download SVG icon from http://tabler-icons.io/i/user -->
-                                    <i class="ti ti-key me-2"></i>
+                                        <i class="ti ti-key me-2"></i>
                                         Change Password</a>
                                 </li>
                             </ul>
@@ -37,14 +46,15 @@
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="tab-pane active show" id="tabs-profile" role="tabpanel">
-                                    <div class="col-12 d-flex flex-column">
+                                    <div class="card card-stacked mt-3">
+                                        <div class="card-status-start bg-primary"></div>
                                         <div class="card-body">
                                             <h2 class="mb-4">My Account</h2>
                                             <h3 class="card-title">Profile Details</h3>
                                             <div class="row align-items-center">
                                                 <div class="col-auto"><span class="avatar avatar-xl" style="background-image: url(./static/avatars/000m.jpg)"></span>
                                                 </div>
-                                                <div class="col-auto"><a href="#" class="btn">
+                                                <div class="col-auto"><a href="#" class="btn btn-secondary">
                                                         Change avatar
                                                     </a></div>
                                                 <div class="col-auto"><a href="#" class="btn btn-ghost-danger">
@@ -66,10 +76,10 @@
                                             <p class="card-subtitle">This contact will be shown to others publicly, so choose it carefully.</p>
                                             <div>
                                                 <div class="row g-2">
-                                                    <div class="col-auto">
-                                                        <input type="text" class="form-control w-auto" value="paweluna@howstuffworks.com">
+                                                    <div class="col-5">
+                                                        <input type="text" class="form-control" value="paweluna@howstuffworks.com">
                                                     </div>
-                                                    <div class="col-auto"><a href="#" class="btn">
+                                                    <div class="col-auto"><a href="#" class="btn btn-secondary">
                                                             Change
                                                         </a></div>
                                                 </div>
@@ -90,7 +100,8 @@
                                 </div>
 
                                 <div class="tab-pane" id="tabs-password" role="tabpanel">
-                                    <div class="col-12 d-flex flex-column">
+                                    <div class="card card-stacked mt-3">
+                                        <div class="card-status-start bg-primary"></div>
                                         <div class="card-body">
                                             <h3 class="card-title">Password</h3>
                                             <p class="card-subtitle">You can set a permanent password if you don't want to use temporary login codes.</p>

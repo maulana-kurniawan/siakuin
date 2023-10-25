@@ -81,7 +81,7 @@
             </div>
         </nav>
 
-        <main class="py-5">
+        <main class="py-0">
             @yield("content")
         </main>
         <footer class="footer footer-transparent d-print-none">
