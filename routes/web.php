@@ -38,3 +38,6 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/setting', function () {
   return view('setting');
 })->name('setting-profile');
+
+
+Route::put('update-user/{id}', [AuthController::class, 'update']);

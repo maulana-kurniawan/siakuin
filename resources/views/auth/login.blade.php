@@ -5,7 +5,7 @@
     <div class="col-12 col-lg-6 col-xl-4 border-top-wide border-primary d-flex flex-column justify-content-center">
         <div class="container container-tight my-5 px-lg-5">
             <div class="text-center mb-4">
-                <a href="." class="navbar-brand navbar-brand-autodark"><img src="{{ ('static/logo.svg') }}" height="36" alt=""></a>
+                <a href="." class="navbar-brand navbar-brand-autodark"><img src="{{ ('assets/logo.svg') }}" height="36" alt=""></a>
             </div>
             <h2 class="h3 text-center mb-5 textHead"></h2>
             <div class="tabs">
@@ -122,7 +122,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Email address</label>
-                        <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Your email">
+                        <input type="email" id="emailRegist" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Your email">
                         @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -132,12 +132,7 @@
                     <div class="mb-3">
                         <label class="form-label">Password</label>
                         <div class="input-group input-group-flat">
-                            <input id="passwordRegist" type="password" placeholder="Your password" class="form-control @error('passwordRegist') is-invalid @enderror" name="password" required autocomplete="new-password">
-                            @error('passwordRegist')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <input id="passwordRegist" type="password" placeholder="Your password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                             <span class="input-group-text">
                                 <a href="javascript:void(0)" class="link-secondary showPassword" data-bs-toggle="tooltip" aria-label="Show password" data-bs-original-title="Show password">
                                     <!-- Download SVG icon from http://tabler-icons.io/i/eye -->
@@ -153,6 +148,11 @@
                                     </span>
                                 </a>
                             </span>
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                     </div>
 
@@ -160,7 +160,7 @@
                         <label class="form-label">Confirm Password</label>
                         <div class="input-group input-group-flat">
                             <input id="password-confirm" type="password" placeholder="Confirm your password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            @error('passwordRegist')
+                            @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -197,7 +197,7 @@
     </div>
     <div class="col-12 col-lg-6 col-xl-8 d-none d-lg-block">
         <!-- Photo -->
-        <div class="bg-cover h-100 min-vh-100" style="background-image: url(static/photos/bg-login.png)"></div>
+        <div class="bg-cover h-100 min-vh-100" style="background-image: url(assets/photos/bg-login.png)"></div>
     </div>
 </div>
 @endsection

@@ -49,6 +49,20 @@
                             </ul>
                         </div>
                         <div class="card-body">
+                            @if (session('status'))
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                                <div class="d-flex" style="align-items: center;">
+                                    <div style="margin-right: 10px;">
+                                        <i class="ti ti-check" style="font-size: x-large;"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="alert-title">Success</h4>
+                                        <div class="text-secondary">{{ session('status') }}</div>
+                                    </div>
+                                </div>
+                                <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+                            </div>
+                            @endif
                             <div class="tab-content">
                                 <div class="tab-pane active show" id="tabs-profile" role="tabpanel">
                                     <div class="card card-stacked mt-3">
@@ -57,7 +71,8 @@
                                             <h2 class="mb-4">My Account</h2>
                                             <h3 class="card-title">Profile Details</h3>
                                             <div class="row align-items-center">
-                                                <div class="col-auto"><span class="avatar avatar-xl" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                                                <div class="col-auto">
+                                                    <img class="avatar avatar-xl" src="{{ Auth::user()->profile_image }}" />
                                                 </div>
                                                 <div class="col-auto"><a href="#" class="btn btn-secondary">
                                                         Change avatar
@@ -67,39 +82,37 @@
                                                     </a></div>
                                             </div>
                                             <h3 class="card-title mt-4">Business Profile</h3>
-                                            <div class="row g-2">
-                                                <div class="col-md">
-                                                    <div class="form-label">Business Name</div>
-                                                    <input type="text" class="form-control" value="Tabler">
-                                                </div>
-                                                <div class="col-md">
-                                                    <div class="form-label">Location</div>
-                                                    <input type="text" class="form-control" value="Peimei, China">
-                                                </div>
-                                            </div>
-                                            <h3 class="card-title mt-4">Email</h3>
-                                            <p class="card-subtitle">This contact will be shown to others publicly, so choose it carefully.</p>
-                                            <div>
-                                                <div class="row g-2">
-                                                    <div class="col-5">
-                                                        <input type="text" class="form-control" value="paweluna@howstuffworks.com">
-                                                    </div>
-                                                    <div class="col-auto"><a href="#" class="btn btn-secondary">
-                                                            Change
-                                                        </a></div>
-                                                </div>
-                                            </div>
 
-                                            <div class="card-footer bg-transparent mt-5">
-                                                <div class="btn-list justify-content-end">
-                                                    <a href="#" class="btn">
-                                                        Cancel
-                                                    </a>
-                                                    <a href="#" class="btn btn-primary">
-                                                        Submit
-                                                    </a>
+                                            <form action="{{ url('update-user/'.Auth::user()->id) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+
+                                                <input type="hidden" name="id" value="{{ Auth::user()->id }}" />
+
+                                                <div class="row g-2">
+                                                    <div class="col-md">
+                                                        <div class="form-label">Business Name</div>
+                                                        <input type="text" name="company_name" class="form-control" value="{{ Auth::user()->company_name }}">
+                                                    </div>
+                                                    <div class="col-md">
+                                                        <div class="form-label">Location</div>
+                                                        <input type="text" name="location" class="form-control" value="{{ Auth::user()->location }}">
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                <h3 class="card-title mt-4">Email</h3>
+                                                <p class="card-subtitle">This contact will be shown to others publicly, so choose it carefully.</p>
+                                                <div class="col-auto">
+                                                    <input type="email" name="email" class="form-control" value="{{ Auth::user()->email }}">
+                                                </div>
+
+                                                <div class="card-footer bg-transparent mt-5">
+                                                    <div class="btn-list justify-content-end">
+                                                        <button type="submit" class="btn btn-primary">
+                                                            Change
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

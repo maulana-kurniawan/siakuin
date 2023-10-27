@@ -58,6 +58,7 @@ class AuthController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
 
+
         $uid = $this->firebaseAuth->registerUser($email, $password);
 
         $user = new User();
@@ -71,6 +72,19 @@ class AuthController extends Controller
 
         return redirect()->intended('/');
     }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::find($id);
+        // $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->company_name = $request->input('company_name');
+        $user->location = $request->input('location');
+        $user->update();
+
+        return redirect()->back()->with('status', 'User Updated Successfully');
+    }
+
 
     public function logout()
     {
