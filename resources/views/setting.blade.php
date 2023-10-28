@@ -70,17 +70,31 @@
                                         <div class="card-body">
                                             <h2 class="mb-4">My Account</h2>
                                             <h3 class="card-title">Profile Details</h3>
-                                            <div class="row align-items-center">
-                                                <div class="col-auto">
-                                                    <img class="avatar avatar-xl" src="{{ Auth::user()->profile_image }}" />
+
+                                            <form method="POST" action="{{ route('update.profile.image') }}" enctype="multipart/form-data">
+                                                @csrf
+
+                                                @if (session('success'))
+                                                <div class="alert alert-success" role="alert">
+                                                    {{ session('success') }}
                                                 </div>
-                                                <div class="col-auto"><a href="#" class="btn btn-secondary">
-                                                        Change avatar
-                                                    </a></div>
-                                                <div class="col-auto"><a href="#" class="btn btn-ghost-danger">
-                                                        Delete avatar
-                                                    </a></div>
-                                            </div>
+                                                @endif
+                                                <div class="row align-items-center">
+                                                    <div class="col-2">
+                                                        <img class="img-fluid" src="{{'avatars/'.(Auth::user()->profile_image ? Auth::user()->profile_image : 'user.png')}}" />
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <input id="profile_image" type="file" class="form-control @error('profile_image') is-invalid @enderror" name="profile_image" value="{{ old('profile_image') }}" required autocomplete="profile_image">
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <button type="submit" class="btn btn-secondary">
+                                                            Change avatar
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+
                                             <h3 class="card-title mt-4">Business Profile</h3>
 
                                             <form action="{{ url('update-user/'.Auth::user()->id) }}" method="POST">

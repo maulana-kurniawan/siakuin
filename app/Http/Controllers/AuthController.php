@@ -85,6 +85,20 @@ class AuthController extends Controller
         return redirect()->back()->with('status', 'User Updated Successfully');
     }
 
+    public function updateProfileImage(Request $request)
+    {
+        $request->validate([
+            'profile_image' => 'required|image',
+        ]);
+  
+        $avatarName = time().'.'.$request->profile_image->getClientOriginalExtension();
+        $request->profile_image->move(public_path('avatars'), $avatarName);
+  
+        Auth()->user()->update(['profile_image'=>$avatarName]);
+  
+        return back()->with('success', 'Avatar updated successfully.');
+    }
+
 
     public function logout()
     {

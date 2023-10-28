@@ -41,3 +41,4 @@ Route::get('/setting', function () {
 
 
 Route::put('update-user/{id}', [AuthController::class, 'update']);
+Route::post('/setting', [AuthController::class, 'updateProfileImage'])->name('update.profile.image');
