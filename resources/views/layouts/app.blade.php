@@ -53,7 +53,9 @@
                         @else
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu" aria-expanded="false">
-                                <span class="avatar avatar-sm" style="background-image: url(./assets/logo-small.svg)"></span>
+                                <span class="avatar avatar-sm">
+                                    <img class="rounded" src="{{'avatars/'.(Auth::user()->profile_image ? Auth::user()->profile_image : 'user.png')}}" alt="">
+                                </span>
                                 <div class="d-none d-xl-block ps-2">
                                     <div>{{ Auth::user()->name }}</div>
                                     <div class="mt-1 small text-secondary">{{ Auth::user()->email }}</div>
