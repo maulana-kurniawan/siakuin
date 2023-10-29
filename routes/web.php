@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,14 @@ use App\Http\Controllers\HomeController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//verifikasi email user
+Auth::routes(['verify' => true]);
+
+Route::middleware(['auth'])->group(function () {
+  Route::get('/', [HomeController::class, 'index']);
+  Route::get('/home', [HomeController::class, 'index'])->name('home');
+  Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
 
 // Login
 Route::get('/login', function () {
@@ -28,11 +37,6 @@ Route::get('/register', function () {
 })->name('register');
 
 Route::post('/register', [AuthController::class, 'register'])->name('post.register');
-
-Route::middleware(['auth'])->group(function () {
-  Route::get('/', [HomeController::class, 'index'])->name('home');
-  Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-});
 
 // Setting Profile
 Route::get('/setting', function () {
