@@ -43,6 +43,8 @@ Route::get('/setting', function () {
   return view('setting');
 })->name('setting-profile');
 
-
 Route::put('update-user/{id}', [AuthController::class, 'update']);
 Route::post('/setting', [AuthController::class, 'updateProfileImage'])->name('update.profile.image');
+
+//Update Password
+Route::post('/change-password', [HomeController::class, 'updatePassword'])->name('update-password');

@@ -138,7 +138,7 @@
                                             <h3 class="card-title">Password</h3>
                                             <p class="card-subtitle">You can set a permanent password if you don't want to use temporary login codes.</p>
                                             <div>
-                                                <a href="#" class="btn">
+                                                <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#modalUpdatePassword">
                                                     Set new password
                                                 </a>
                                             </div>
@@ -152,4 +152,57 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal-Reset_Password -->
+    <div class="modal" id="modalUpdatePassword" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <h5 class="modal-title text-white">Set New Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ route('update-password') }}" method="POST">
+                    <div class="modal-body">
+                        @csrf
+                        <div class="card-body">
+                            @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                            @elseif (session('error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ session('error') }}
+                            </div>
+                            @endif
+
+                            <div class="mb-3">
+                                <label for="oldPasswordInput" class="form-label">Old Password</label>
+                                <input name="old_password" type="password" class="form-control @error('old_password') is-invalid @enderror" id="oldPasswordInput" placeholder="Old Password">
+                                @error('old_password')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="newPasswordInput" class="form-label">New Password</label>
+                                <input name="new_password" type="password" class="form-control @error('new_password') is-invalid @enderror" id="newPasswordInput" placeholder="New Password">
+                                @error('new_password')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmNewPasswordInput" class="form-label">Confirm New Password</label>
+                                <input name="new_password_confirmation" type="password" class="form-control" id="confirmNewPasswordInput" placeholder="Confirm New Password">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger me-auto" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     @endsection
