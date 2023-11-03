@@ -24,6 +24,15 @@
 
 <body>
     <div id="app">
+        @guest
+        @if (Route::has("login"))
+        <div></div>
+        @endif
+
+        @if (Route::has("register"))
+        <div></div>
+        @endif
+        @else
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url("/") }}">
@@ -38,19 +47,6 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        @guest
-                        @if (Route::has("login"))
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="{{ route("login") }}">{{ __("Login") }}</a>
-                            </li> -->
-                        @endif
-
-                        @if (Route::has("register"))
-                        <!-- <li class="nav-item">
-                             <a class="nav-link" href="{{ route("register") }}">{{ __("Register") }}</a>
-                             </li> -->
-                        @endif
-                        @else
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu" aria-expanded="false">
                                 <span class="avatar avatar-sm shadow-sm">
@@ -69,19 +65,18 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route("logout") }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    <span class="me-2"><i class="ti ti-logout"></i></span>  {{ __("Logout") }}
+                                    <span class="me-2"><i class="ti ti-logout"></i></span> {{ __("Logout") }}
                                 </a>
                                 <form id="logout-form" action="{{ route("logout") }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             </div>
                         </div>
-
-                        @endguest
                     </ul>
                 </div>
             </div>
         </nav>
+        @endguest
 
         <main class="py-0">
             @yield("content")
